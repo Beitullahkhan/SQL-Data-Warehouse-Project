@@ -1,17 +1,35 @@
 /*
+
 ===============================================================================
 Create Table For Bronze Schema
 ===============================================================================
 Script Purpose:
-    This script creates a new database named 'Datawarehouse' after checking if it already exists.
-    If the database exists, it is dropped and recreated. Additionally, the script sets up three schemas
-    within the database: 'Bronze', 'Silver', and 'Gold'.
+This repository contains SQL scripts for creating and managing the Bronze Layer of a data warehouse.The scripts define the initial database structures
+used to store raw data from CRM and ERP source systems before it is cleaned, transformed, and loaded into downstream data warehouse layers.
 
-WARNING:
-    Running this script will drop the entire 'DataWarehouse' database if it exists.
-    All data in the database will be permanently deleted. Proceed with caution
-    and ensure you have proper backups before running this script.
+The Bronze layer includes tables for:
+
+CRM Customer Data — customer IDs, names, marital status, gender, and creation dates.
+CRM Product Data — product details, costs, product lines, and effective dates.
+CRM Sales Data — sales orders, products, customers, dates, quantities, prices, and sales amounts.
+ERP Customer Location Data — customer identifiers and country information.
+ERP Customer Demographic Data — birth dates and gender information.
+ERP Product Category Data — product categories, subcategories, and maintenance information.
+
+Each script first checks whether the corresponding table already exists and drops it before recreating the table with the required schema.
+This ensures a consistent and repeatable environment for loading fresh source data during the ETL/ELT process.
+
+The primary purpose of this Bronze layer is to provide a raw, structured landing zone for source data while preserving the original information.
+Subsequent data warehouse layers can then use these tables for data cleansing, standardization, integration, and business transformations.
+
+Key Objectives
+Create a structured Bronze layer for raw CRM and ERP data.
+Maintain consistent table definitions across development and testing environments.
+Support repeatable data loading and ETL/ELT workflows.
+Provide a foundation for data quality checks and transformation processes.
+
 */
+
 IF OBJECT_ID ('bronze.crm_cust_info','U') IS NOT NULL
 	DROP TABLE bronze.crm_cust_info;
 CREATE TABLE bronze.crm_cust_info
