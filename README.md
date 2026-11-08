@@ -50,6 +50,12 @@ These insights provide stakeholders with meaningful business metrics and support
 
 ---
 
+## 🏗️ Data Architecture
+
+The project follows the Medallion Architecture with Bronze, Silver, and Gold layers:
+![Data Architecture](<img width="682" height="412" alt="Data warehouse architecture Diagram drawio" src="https://github.com/user-attachments/assets/ddcdcc22-b348-403a-b1ce-8d2bf1c627ec" />
+)
+
 ## 📊 Project Goals
 
 The main goals of this project are to:
